@@ -33,5 +33,6 @@ Update a Document:
                                                  :expires_on => '2015/01/01'})
                                                  
 Download a Document:
-
+  
+  # Downloads file to ~/Documents/Identification Document.png
   user.download_document(:document => identification_document, :to => '~/Documents')

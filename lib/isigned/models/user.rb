@@ -71,7 +71,7 @@ module ISigned
 
       ISigned::API.request(:url => 'user/download_document', 
                            :parameters => {:id => document.id, :api_token => self.token}, 
-                           :save_as => "#{save_to}/#{document.file_name}")
+                           :save_as => "#{save_to}/#{document.filename_with_extension}")
     end
   
     # Lists the Users Folders.
