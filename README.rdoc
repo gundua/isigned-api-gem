@@ -1,0 +1,33 @@
+= iSigned - Securely store, manage and share your important documents.
+
+Provides a ruby interface to http://www.isigned.com and is supplied for the purpose of allowing vendors and developers to integrate with iSigned,
+covering only functionality that will assist with basic integration.
+
+Once you have signed up and activated from the website[http://www.isigned.com] you can authenticate using those credentials.
+
+= Examples
+
+To authenticate the User:
+
+  user, authenticated = ISigned::User.authenticate(:email => 'bob_smith@mailinator.com', :password => 'password')
+  
+To upload three files to store as Documents on iSigned in the 'Personal/Travel' Folders:
+
+  travel_folder = user.find_folder(:path => 'Personal/Travel')
+
+  uploaded_documents = user.upload_documents(:to => travel_folder,
+                                             :files => ['~/Documents/Travel/Identification Document.png', 
+                                                        '~/Documents/Travel/Passport.png',
+                                                        '~/Documents/Travel/Visa Documentation.pdf'])
+
+To share a Document:
+
+  identification_document = upload_documents.first
+  
+  shared_with = user.share_document(:document => identification_document, :with => 'jane@mailinator.com, joe@mailinator.com')
+
+To update a Document:
+
+  updated = user.update_document(:document => identification_document, 
+                                 :attributes => {:description => 'Copy of ZA identification document for reference', 
+                                                 :expires_on => '2015/01/01'})

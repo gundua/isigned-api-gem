@@ -1,0 +1,13 @@
+require 'rubygems'
+require 'active_support'
+require 'uri'
+require 'httparty'
+require 'open3'
+
+require 'extensions'
+require 'isigned/models/model'
+require 'isigned/models/user'
+require 'isigned/models/folder'
+require 'isigned/models/document'
+require 'isigned/api/api'
+require 'isigned/api/response'
