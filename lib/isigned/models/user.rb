@@ -14,6 +14,11 @@ module ISigned
     #
     # * +email+ - The email address of the User to authenticate.
     # * +password+ - Optional. Works in conjunction with the +url+ option and indicates if latitude and longitude parameters of
+    #
+    # ==== Returns
+    #
+    # * +user+ - The User 
+    # * +updated+ - Indicates if the authentication is successful
     def self.authenticate(options)
       response = ISigned::API.request(:url => 'user/authenticate', 
                                       :parameters => {:email => options[:email], :password => options[:password]})

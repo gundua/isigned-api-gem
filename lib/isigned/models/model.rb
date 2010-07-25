@@ -1,6 +1,6 @@
-module ISigned
+module ISigned #:nodoc:
   
-  class Model
+  class Model #:nodoc:
     attr_accessor :errors
 
     def self.build(options)
