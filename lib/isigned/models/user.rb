@@ -1,9 +1,9 @@
 module ISigned
-  
+   
   class User < Model
     attr_accessor :email, :token
 
-    def initialize(options)
+    def initialize(options) #:nodoc:
       self.email = options[:email]
       self.token = options[:token]
     end
