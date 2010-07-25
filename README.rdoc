@@ -7,11 +7,11 @@ Once you have signed up and activated from the website[http://www.isigned.com] y
 
 = Examples
 
-To authenticate the User:
+Authenticate the User:
 
   user, authenticated = ISigned::User.authenticate(:email => 'bob_smith@mailinator.com', :password => 'password')
   
-To upload three files to store as Documents on iSigned in the 'Personal/Travel' Folders:
+Upload three files to store as Documents on iSigned in the 'Personal/Travel' Folders:
 
   travel_folder = user.find_folder(:path => 'Personal/Travel')
 
@@ -20,14 +20,18 @@ To upload three files to store as Documents on iSigned in the 'Personal/Travel' 
                                                         '~/Documents/Travel/Passport.png',
                                                         '~/Documents/Travel/Visa Documentation.pdf'])
 
-To share a Document:
+Share a Document:
 
   identification_document = upload_documents.first
   
   shared_with = user.share_document(:document => identification_document, :with => 'jane@mailinator.com, joe@mailinator.com')
 
-To update a Document:
+Update a Document:
 
   updated = user.update_document(:document => identification_document, 
                                  :attributes => {:description => 'Copy of ZA identification document for reference', 
                                                  :expires_on => '2015/01/01'})
+                                                 
+Download a Document:
+
+  user.download_document(:document => identification_document, :to => '~/Documents')

@@ -63,15 +63,15 @@ module ISigned
     #
     # ==== Options:
     #
-    # * +document+ - The Document to download
-    # * +save_as+ - The path where the file will be saved to
+    # * +document+ - The Document to download.
+    # * +to+ - The directory path where the file will be saved to.
     def download_document(options)
       document = options[:document]
-      save_as = options[:save_as]
+      save_to = options[:to]
 
       ISigned::API.request(:url => 'user/download_document', 
                            :parameters => {:id => document.id, :api_token => self.token}, 
-                           :save_as => save_as)
+                           :save_as => "#{save_to}/#{document.file_name}")
     end
   
     # Lists the Users Folders.
@@ -158,15 +158,18 @@ module ISigned
     #   * +expires_on+ - The updated expires_on date of the Document
     def update_document(options)
       document = options[:document]
-
-      api_parameters = {:id => document.id, :api_token => self.token}
-      api_parameters.merge! options[:attributes]
+      attributes = options[:attributes]      
+      api_parameters = ({:id => document.id, :api_token => self.token}).merge(attributes)
 
       update_response = ISigned::API.request(:url => 'user/update_document', :parameters => api_parameters)
 
       updated = update_response.has_message?('Document updated')
 
-      if updated.false?
+      if updated.true?
+        attributes.each do |name, value|
+          document.send "#{name}=", value
+        end
+      else
         document.errors = update_response.errors
       end
 
