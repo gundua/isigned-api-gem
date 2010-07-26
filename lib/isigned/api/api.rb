@@ -2,8 +2,11 @@ module ISigned #:nodoc:
   module API #:nodoc:
     
     def self.api_host_address
-      "http://localhost:3000"
-      #"http://staging.isigned.com"
+      if defined?(USE_LOCAL_SERVER)
+        "http://localhost:3000"
+      else
+        "http://www.isigned.com"
+      end
     end
     
     def self.request(options)
