@@ -5,7 +5,7 @@ module ISigned #:nodoc:
       if defined?(USE_LOCAL_SERVER)
         "http://localhost:3000"
       else
-        "http://www.isigned.com"
+        "https://www.isigned.com"
       end
     end
     

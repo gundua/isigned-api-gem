@@ -9,9 +9,12 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["iSigned"]
-  s.date = %q{2010-07-25}
+  s.date = %q{2010-07-26}
   s.description = %q{iSigned - Securely store, manage and share your important documents}
   s.email = %q{info@isigned.com}
+  s.extra_rdoc_files = [
+    "README.rdoc"
+  ]
   s.files = [
     "lib/extensions.rb",
      "lib/isigned.rb",

@@ -22,7 +22,7 @@ Upload three files to store as Documents on iSigned in the 'Personal/Travel' Fol
 
 Share a Document:
 
-  identification_document = upload_documents.first
+  identification_document = uploaded_documents.first
   
   shared_with = user.share_document(:document => identification_document, :with => 'jane@mailinator.com, joe@mailinator.com')
 
